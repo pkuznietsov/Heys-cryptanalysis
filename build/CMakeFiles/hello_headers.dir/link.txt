@@ -1,0 +1,1 @@
+/usr/bin/c++  -mavx -mfma   CMakeFiles/hello_headers.dir/src/main.cpp.o CMakeFiles/hello_headers.dir/src/heys.cpp.o  -o hello_headers 
