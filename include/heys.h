@@ -9,9 +9,7 @@ private:
 
 public:
 
-    std::vector<block> txt2blocks(std::string path){
-
-    }
+    std::vector<block> txt2blocks(std::string path);
 
 
 
