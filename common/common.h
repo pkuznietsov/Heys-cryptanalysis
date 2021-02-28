@@ -1,6 +1,9 @@
 #pragma once
 
 #include <stdexcept>
+#include <iostream>
+#include <fstream>
+#include <filesystem>
 #include <vector>
 #include <array>
 
@@ -10,4 +13,3 @@ using rkey     = uint16_t;
 
 enum cipher_params { BLOCK_SIZE = 16, KEY_SIZE = 16, NUBBIN_SIZE = 4, ROUNDS_AMOUNT = 7 }; 
 enum mode { ENCRYPT, DECRYPT };
- 

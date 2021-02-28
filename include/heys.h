@@ -17,14 +17,6 @@ public:
     ~heys();
 };
 
-heys::heys(/* args */)
-{
-}
-
-heys::~heys()
-{
-}
-
 
 /*
 
