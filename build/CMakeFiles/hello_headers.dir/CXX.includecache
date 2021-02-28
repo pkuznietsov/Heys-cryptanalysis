@@ -7,6 +7,8 @@
 #IncludeRegexTransform: 
 
 ../common/common.h
+typeinfo
+-
 stdexcept
 -
 iostream
