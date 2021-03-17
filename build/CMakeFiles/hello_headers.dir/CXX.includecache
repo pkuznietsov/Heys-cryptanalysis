@@ -32,11 +32,11 @@ fstream
 iostream
 -
 
-/home/pavel/Heys-cryptanalysis/src/heys.cpp
+/home/pavel/a/ipt/heys-cryptanalysis/src/heys.cpp
 heys.h
-/home/pavel/Heys-cryptanalysis/src/heys.h
+/home/pavel/a/ipt/heys-cryptanalysis/src/heys.h
 
-/home/pavel/Heys-cryptanalysis/src/main.cpp
+/home/pavel/a/ipt/heys-cryptanalysis/src/main.cpp
 iostream
 -
 heys.h

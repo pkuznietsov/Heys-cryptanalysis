@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pavel/Heys-cryptanalysis
+CMAKE_SOURCE_DIR = /home/pavel/a/ipt/heys-cryptanalysis
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pavel/Heys-cryptanalysis/build
+CMAKE_BINARY_DIR = /home/pavel/a/ipt/heys-cryptanalysis/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/hello_headers.dir/depend.make
@@ -59,29 +59,29 @@ include CMakeFiles/hello_headers.dir/flags.make
 
 CMakeFiles/hello_headers.dir/src/main.cpp.o: CMakeFiles/hello_headers.dir/flags.make
 CMakeFiles/hello_headers.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pavel/Heys-cryptanalysis/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/hello_headers.dir/src/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hello_headers.dir/src/main.cpp.o -c /home/pavel/Heys-cryptanalysis/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pavel/a/ipt/heys-cryptanalysis/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/hello_headers.dir/src/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hello_headers.dir/src/main.cpp.o -c /home/pavel/a/ipt/heys-cryptanalysis/src/main.cpp
 
 CMakeFiles/hello_headers.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hello_headers.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pavel/Heys-cryptanalysis/src/main.cpp > CMakeFiles/hello_headers.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pavel/a/ipt/heys-cryptanalysis/src/main.cpp > CMakeFiles/hello_headers.dir/src/main.cpp.i
 
 CMakeFiles/hello_headers.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hello_headers.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pavel/Heys-cryptanalysis/src/main.cpp -o CMakeFiles/hello_headers.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pavel/a/ipt/heys-cryptanalysis/src/main.cpp -o CMakeFiles/hello_headers.dir/src/main.cpp.s
 
 CMakeFiles/hello_headers.dir/src/heys.cpp.o: CMakeFiles/hello_headers.dir/flags.make
 CMakeFiles/hello_headers.dir/src/heys.cpp.o: ../src/heys.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pavel/Heys-cryptanalysis/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hello_headers.dir/src/heys.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hello_headers.dir/src/heys.cpp.o -c /home/pavel/Heys-cryptanalysis/src/heys.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pavel/a/ipt/heys-cryptanalysis/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hello_headers.dir/src/heys.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hello_headers.dir/src/heys.cpp.o -c /home/pavel/a/ipt/heys-cryptanalysis/src/heys.cpp
 
 CMakeFiles/hello_headers.dir/src/heys.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hello_headers.dir/src/heys.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pavel/Heys-cryptanalysis/src/heys.cpp > CMakeFiles/hello_headers.dir/src/heys.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pavel/a/ipt/heys-cryptanalysis/src/heys.cpp > CMakeFiles/hello_headers.dir/src/heys.cpp.i
 
 CMakeFiles/hello_headers.dir/src/heys.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hello_headers.dir/src/heys.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pavel/Heys-cryptanalysis/src/heys.cpp -o CMakeFiles/hello_headers.dir/src/heys.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pavel/a/ipt/heys-cryptanalysis/src/heys.cpp -o CMakeFiles/hello_headers.dir/src/heys.cpp.s
 
 # Object files for target hello_headers
 hello_headers_OBJECTS = \
@@ -95,7 +95,7 @@ hello_headers: CMakeFiles/hello_headers.dir/src/main.cpp.o
 hello_headers: CMakeFiles/hello_headers.dir/src/heys.cpp.o
 hello_headers: CMakeFiles/hello_headers.dir/build.make
 hello_headers: CMakeFiles/hello_headers.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pavel/Heys-cryptanalysis/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable hello_headers"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pavel/a/ipt/heys-cryptanalysis/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable hello_headers"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/hello_headers.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -108,6 +108,6 @@ CMakeFiles/hello_headers.dir/clean:
 .PHONY : CMakeFiles/hello_headers.dir/clean
 
 CMakeFiles/hello_headers.dir/depend:
-	cd /home/pavel/Heys-cryptanalysis/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pavel/Heys-cryptanalysis /home/pavel/Heys-cryptanalysis /home/pavel/Heys-cryptanalysis/build /home/pavel/Heys-cryptanalysis/build /home/pavel/Heys-cryptanalysis/build/CMakeFiles/hello_headers.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pavel/a/ipt/heys-cryptanalysis/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pavel/a/ipt/heys-cryptanalysis /home/pavel/a/ipt/heys-cryptanalysis /home/pavel/a/ipt/heys-cryptanalysis/build /home/pavel/a/ipt/heys-cryptanalysis/build /home/pavel/a/ipt/heys-cryptanalysis/build/CMakeFiles/hello_headers.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/hello_headers.dir/depend
 

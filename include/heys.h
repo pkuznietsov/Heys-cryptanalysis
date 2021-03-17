@@ -10,7 +10,8 @@ private:
 public:
 
     std::vector<block> txt2blocks(std::string path);
-
+    std::vector<block> sub2blocks(std::vector<char> sub_blocks);
+    std::vector<char> blocks2sub(std::vector<block> blocks);
 
 
     heys(/* args */);

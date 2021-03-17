@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/pavel/Heys-cryptanalysis/include -I/home/pavel/Heys-cryptanalysis/common 
+CXX_INCLUDES = -I/home/pavel/a/ipt/heys-cryptanalysis/include -I/home/pavel/a/ipt/heys-cryptanalysis/common 
 

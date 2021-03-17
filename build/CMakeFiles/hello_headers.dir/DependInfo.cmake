@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pavel/Heys-cryptanalysis/src/heys.cpp" "/home/pavel/Heys-cryptanalysis/build/CMakeFiles/hello_headers.dir/src/heys.cpp.o"
-  "/home/pavel/Heys-cryptanalysis/src/main.cpp" "/home/pavel/Heys-cryptanalysis/build/CMakeFiles/hello_headers.dir/src/main.cpp.o"
+  "/home/pavel/a/ipt/heys-cryptanalysis/src/heys.cpp" "/home/pavel/a/ipt/heys-cryptanalysis/build/CMakeFiles/hello_headers.dir/src/heys.cpp.o"
+  "/home/pavel/a/ipt/heys-cryptanalysis/src/main.cpp" "/home/pavel/a/ipt/heys-cryptanalysis/build/CMakeFiles/hello_headers.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
