@@ -3,16 +3,19 @@
 class heys
 {
 private:
-
     std::vector<block> data;
-    std::array<rkey, ROUNDS_AMOUNT> key;
+    std::array<rkey, cipher_params::ROUNDS_AMOUNT> key = {0xABBA, 0xBABA, 0xAAAA, 0xBA02, 0x0BAC, 0x0CAB, 0x0011};
 
 public:
+    std::vector<char> blocks_to_chars(std::vector<block> blocks);
+    std::vector<block> chars_to_blocks(std::vector<char> chars);
 
-    std::vector<block> txt2blocks(std::string path);
-    std::vector<block> sub2blocks(std::vector<char> sub_blocks);
-    std::vector<char> blocks2sub(std::vector<block> blocks);
+    int txt_to_data(std::string text_name);
+    int data_to_txt(std::string text_name);
 
+    int cihper();
+    void heys::round(block &temp, int i);
+    void heys::enc(block &x);
 
     heys(/* args */);
     ~heys();

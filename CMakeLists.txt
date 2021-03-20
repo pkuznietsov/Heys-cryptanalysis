@@ -1,15 +1,16 @@
 cmake_minimum_required(VERSION 3.5)
 set (CMAKE_CXX_STANDARD 17)
-project (hello_headers)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+project (heys)
 
 set(SOURCES
     src/main.cpp
     src/heys.cpp
 )
 
-add_executable(hello_headers ${SOURCES})
+add_executable(heys ${SOURCES})
 
-target_include_directories(hello_headers
+target_include_directories(heys
     PRIVATE 
         ${PROJECT_SOURCE_DIR}/include
         ${PROJECT_SOURCE_DIR}/common

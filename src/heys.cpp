@@ -1,31 +1,39 @@
 #include "heys.h"
 
-//namespace fs = filesystem;
-
 namespace fs = std::filesystem;
 
-std::vector<block> heys::sub2blocks(std::vector<char> sub_blocks) {
+std::vector<block> heys::chars_to_blocks(std::vector<char> chars) {
     
-    if ( sub_blocks.size() % 2 != 0 ) {
-        sub_blocks.push_back('\0');
+    if ( chars.size() % 2 != 0 ) {
+        chars.push_back('\0');
     }
 
     std::vector<block> result = {};
 
-    for (int i = 0; i < sub_blocks.size(); i += 2){
-        block r = sub_blocks[i];
+    for (int i = 0; i < chars.size(); i += 2){
+        block r = chars[i];
         r <<= 8;
-        r += sub_blocks[i+1];
+        r += chars[i+1];
         result.push_back(r);
     }
     return result;
 }
 
-std::vector<block> heys::txt2blocks(std::string text_name) {
+std::vector<char> heys::blocks_to_chars(std::vector<block> blocks) {
+    std::vector<char> result = {};
+    for (int i = 0; i < blocks.size(); i++) {
+        char l1 = (blocks[i] & 0xFF00) >> 8;
+        char l2 = (blocks[i] & 0xFF);
+        result.push_back(l1);
+        result.push_back(l2);   
+    }
+    return result;
+} 
+
+int heys::txt_to_data(std::string text_name) {
     
     std::string current_path = fs::current_path();
-    current_path.replace(current_path.find_last_of('/') + 1, 4, "text").pop_back();
-    current_path += ("/" + text_name);
+    current_path += ("/text/" + text_name);
     
     char letter;
 
@@ -36,30 +44,60 @@ std::vector<block> heys::txt2blocks(std::string text_name) {
 
     if( !reader ) {
         std::cout << "Error opening input file" << std::endl;
-        std::vector<block> empty_vector = {0};
-        return empty_vector;
+        return errors::INPUT_ERROR;
     }
 
-    std::vector<char> sub_blocks = {};
+    std::vector<char> chars = {};
     for( i = 0; ! reader.eof() ; i++ ) {
         reader.get( letter );
-        sub_blocks.push_back(letter);
+        chars.push_back(letter);
     }
-    reader.close() ;
+    reader.close();
 
-    return sub2blocks(sub_blocks);
+    data = chars_to_blocks(chars);
+    return 0;
 }
 
-std::vector<char> heys::blocks2sub(std::vector<block> blocks){
-    std::vector<char> result = {};
-    for (int i = 0; i < blocks.size(); i++) {
-        char l1 = (blocks[i] & 0xFF00) >> 8;
-        char l2 = (blocks[i] & 0xFF);
-        result.push_back(l1);
-        result.push_back(l2);   
+int heys::data_to_txt(std::string text_name) {
+    std::vector<char> chars = blocks_to_chars(data);
+
+    std::string result(chars.begin(), chars.end());
+
+    std::string current_path = fs::current_path();
+    current_path += ("/text/" + text_name);
+
+    std::ofstream out(current_path);
+    if( !out ) {
+        std::cout << "Error opening output file" << std::endl;
+        return errors::OUTPUT_ERROR;
     }
-    return result;
+
+    out << result;
+    out.close();
+    return 0;
+}
+
+
+void heys::round(block &temp, int i){
+    temp = temp ^ key[i];
+    
+
+}
+
+void heys::enc(block &x) {
+    for (int i = 0; i < 7; i++){
+        round(x,i);
+    }
 } 
+
+int heys::cihper() {
+    for (int i = 0; i < data.size(); i++){
+        enc(data[i]);
+    }
+    return 0;
+}
+
+
 
 heys::heys(/* args */)
 {
