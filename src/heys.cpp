@@ -80,9 +80,22 @@ int heys::data_to_txt(std::string text_name) {
 
 void heys::round(block &temp, int i){
     temp = temp ^ key[i];
-    
 
-}
+    uint16_t mask = 0xF000;
+    std::vector<nubbin> nubbins = {};
+    for (int i = 3; i >= 0; i--){
+        nubbins.push_back((temp & mask) >> 4 * i);
+        mask = mask >> 4;
+    }
+
+    for (int i = 0; i < 4; i ++) {
+        nubbins[i] = S_block[nubbins[i]];
+    }
+
+    nubbins[0] = nubbins[0] | ((nubbins[1] & 0x8) >> 1) | ((nubbins[2] & 0x8) >> 2) | ((nubbins[3] & 0x8) >> 3);  
+    nubbins[1] = ((nubbins[0] & 0x2) >> 2) | (nubbins[1] & 0x2) | ((nubbins[2] & 0x2) >> 1) | ((nubbins[3] & 0x2) >> 2);
+    
+} 
 
 void heys::enc(block &x) {
     for (int i = 0; i < 7; i++){

@@ -7,6 +7,7 @@
 #include <filesystem>
 #include <vector>
 #include <array>
+#include <map>
 
 using block    = uint16_t; 
 using nubbin   = uint16_t; 
