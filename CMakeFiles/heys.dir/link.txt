@@ -1,0 +1,1 @@
+/usr/bin/c++  -g CMakeFiles/heys.dir/src/main.cpp.o CMakeFiles/heys.dir/src/heys.cpp.o -o heys 

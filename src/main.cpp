@@ -3,9 +3,14 @@
 #include <heys.h>
 
 int main(){
-    heys * a = new heys();
-    auto x = a -> txt_to_data("text1.txt");
-    auto y = a -> data_to_txt("output1.txt");
+    heys * cipher = new heys();
+    auto t2d_error_handler = cipher -> txt_to_data("text.txt");
+    auto enc_error_handler = cipher -> encrypt();
+
+
+    auto d2t_error_handler = cipher -> data_to_txt("enc.txt");
+
+
     
-    a -> ~heys();
+    cipher -> ~heys();
 }

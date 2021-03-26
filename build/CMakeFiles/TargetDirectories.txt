@@ -1,3 +1,0 @@
-/home/pavel/a/ipt/heys-cryptanalysis/build/CMakeFiles/rebuild_cache.dir
-/home/pavel/a/ipt/heys-cryptanalysis/build/CMakeFiles/edit_cache.dir
-/home/pavel/a/ipt/heys-cryptanalysis/build/CMakeFiles/heys.dir

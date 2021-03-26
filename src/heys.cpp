@@ -41,7 +41,6 @@ int heys::txt_to_data(std::string text_name) {
     std::string line;
 
     std::ifstream reader( current_path );
-
     if( !reader ) {
         std::cout << "Error opening input file" << std::endl;
         return errors::INPUT_ERROR;
@@ -55,10 +54,13 @@ int heys::txt_to_data(std::string text_name) {
     reader.close();
 
     data = chars_to_blocks(chars);
+    std::vector<block> empty_vector(data.size(), 0);
+    this->encrypted_data = empty_vector;
     return 0;
 }
 
 int heys::data_to_txt(std::string text_name) {
+    data = encrypted_data;
     std::vector<char> chars = blocks_to_chars(data);
 
     std::string result(chars.begin(), chars.end());
@@ -78,7 +80,7 @@ int heys::data_to_txt(std::string text_name) {
 }
 
 
-void heys::round(block &temp, int i){
+block heys::e_round(block temp, int i){
     temp = temp ^ key[i];
 
     uint16_t mask = 0xF000;
@@ -92,25 +94,67 @@ void heys::round(block &temp, int i){
         nubbins[i] = S_block[nubbins[i]];
     }
 
-    nubbins[0] = nubbins[0] | ((nubbins[1] & 0x8) >> 1) | ((nubbins[2] & 0x8) >> 2) | ((nubbins[3] & 0x8) >> 3);  
-    nubbins[1] = ((nubbins[0] & 0x2) >> 2) | (nubbins[1] & 0x2) | ((nubbins[2] & 0x2) >> 1) | ((nubbins[3] & 0x2) >> 2);
-    
-} 
+    nubbins[0] = (nubbins[0] & 0x8) | ((nubbins[1] & 0x8) >> 1) | ((nubbins[2] & 0x8) >> 2) | ((nubbins[3] & 0x8) >> 3);  
+    nubbins[1] = ((nubbins[0] & 0x4) << 1) | (nubbins[1] & 0x4) | ((nubbins[2] & 0x4) >> 1) | ((nubbins[3] & 0x4) >> 2);
+    nubbins[2] = ((nubbins[0] & 0x2) << 2) | ((nubbins[1] & 0x2) << 1) | (nubbins[2] & 0x2) | ((nubbins[3] & 0x2) >> 1);
+    nubbins[3] = ((nubbins[0] & 0x1) << 3) | ((nubbins[1] & 0x1) << 2) | ((nubbins[2] & 0x1) << 1) | (nubbins[3] & 0x1);
 
-void heys::enc(block &x) {
-    for (int i = 0; i < 7; i++){
-        round(x,i);
+    return ( nubbins[0] << 12 ) | ( nubbins[1] << 8 ) | ( nubbins[2] << 4 ) | ( nubbins[3] );
+}  
+
+block heys::enc(block x) {
+    block result = x;
+    for (int i = 0; i < 7; i++) {
+       result = e_round(result,i);
     }
+    return result;
 } 
 
-int heys::cihper() {
-    for (int i = 0; i < data.size(); i++){
-        enc(data[i]);
+int heys::encrypt() {
+    for (int i = 0; i < data.size(); i++) {
+        encrypted_data[i] = enc(data[i]);
     }
     return 0;
 }
 
+/***
+block heys::d_round(block temp, int i){
+    temp = temp ^ key[i];
 
+    uint16_t mask = 0xF000;
+    std::vector<nubbin> nubbins = {};
+    for (int i = 3; i >= 0; i--){
+        nubbins.push_back((temp & mask) >> 4 * i);
+        mask = mask >> 4;
+    }
+
+    for (int i = 0; i < 4; i ++) {
+        nubbins[i] = S_block[nubbins[i]];
+    }
+
+    nubbins[0] = (nubbins[0] & 0x8) | ((nubbins[1] & 0x8) >> 1) | ((nubbins[2] & 0x8) >> 2) | ((nubbins[3] & 0x8) >> 3);  
+    nubbins[1] = ((nubbins[0] & 0x4) << 1) | (nubbins[1] & 0x4) | ((nubbins[2] & 0x4) >> 1) | ((nubbins[3] & 0x4) >> 2);
+    nubbins[2] = ((nubbins[0] & 0x2) << 2) | ((nubbins[1] & 0x2) << 1) | (nubbins[2] & 0x2) | ((nubbins[3] & 0x2) >> 1);
+    nubbins[3] = ((nubbins[0] & 0x1) << 3) | ((nubbins[1] & 0x1) << 2) | ((nubbins[2] & 0x1) << 1) | (nubbins[3] & 0x1);
+
+    return ( nubbins[0] << 12 ) | ( nubbins[1] << 8 ) | ( nubbins[2] << 4 ) | ( nubbins[3] );
+}  
+
+block heys::dec(block x) {
+    block result = x;
+    for (int i = 0; i < 7; i++) {
+       result = d_round(result,i);
+    }
+    return result;
+} 
+
+int heys::decrypt() {
+    for (int i = 0; i < data.size(); i++) {
+        encrypted_data[i] = dec(data[i]);
+    }
+    return 0;
+}
+***/
 
 heys::heys(/* args */)
 {

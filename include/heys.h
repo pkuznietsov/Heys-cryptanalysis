@@ -4,6 +4,8 @@ class heys
 {
 private:
     std::vector<block> data;
+    std::vector<block> encrypted_data;
+
     std::array<rkey, cipher_params::ROUNDS_AMOUNT> key = { 0xABBA, 0xBABA, 0xAAAA, 0xBA02, 0x0BAC, 0x0CAB, 0x0011 };
     std::vector<block> S_block = { 0x2, 0x8, 0x9, 0x7, 0x5, 0xF, 0x0, 0xB, 0xC, 0x1, 0xD, 0xE, 0xA, 0x3, 0x6, 0x4 };
 
@@ -14,11 +16,15 @@ public:
     int txt_to_data(std::string text_name);
     int data_to_txt(std::string text_name);
 
-    int cihper();
-    void heys::round(block &temp, int i);
-    void heys::enc(block &x);
+    int encrypt();
+    block e_round(block temp, int i);
+    block enc(block x);
 
-    heys(/* args */);
+    int decrypt();
+    block d_round(block temp, int i);
+    block dec(block x);
+
+    heys( );
     ~heys();
 };
 
